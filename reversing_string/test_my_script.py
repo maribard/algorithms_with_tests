@@ -1,4 +1,4 @@
-from CAE.my_script import reverse_string
+from reversing_string.my_script import reverse_string
 
 
 def test_reverse_string_with_long_and_short_words():
