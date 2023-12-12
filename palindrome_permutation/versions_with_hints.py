@@ -22,10 +22,8 @@ def checking_if_str_is_perm_of_pal(string):
                 char_set.remove(char)
             else:
                 char_set.add(char)
-        #print(len(char_set))
-        return len(char_set) == 1
 
-print(checking_if_str_is_perm_of_pal("Tact Coa"))
+        return len(char_set) == 1
 
 
 # much better
@@ -41,4 +39,20 @@ def checking_if_str_is_perm_of_pal_2(string):
     else:
         return odd_count == 1
 
-print(checking_if_str_is_perm_of_pal_2("Tact Coa"))
+
+# reducing space
+def checking_if_str_is_perm_of_pal_with_bit_vector(string):
+    list_of_words = re.findall(r"[\w']+|[.,!?;\-]", string)
+    list_as_str = ''.join(list_of_words).lower()
+    checker = 0
+
+    for char in list_as_str:
+        val = ord(char)
+
+        # Przełącza dany bit w 'checker' przy użyciu operacji XOR (^)
+        checker ^= (1 << val)
+
+    if len(list_as_str) % 2 == 0:
+        return checker == 0
+    else:
+        return checker != 0

@@ -1,0 +1,36 @@
+[1mdiff --git a/palindrome_permutation/versions_with_hints.py b/palindrome_permutation/versions_with_hints.py[m
+[1mindex 9827523..774e483 100644[m
+[1m--- a/palindrome_permutation/versions_with_hints.py[m
+[1m+++ b/palindrome_permutation/versions_with_hints.py[m
+[36m@@ -25,8 +25,6 @@[m [mdef checking_if_str_is_perm_of_pal(string):[m
+         #print(len(char_set))[m
+         return len(char_set) == 1[m
+ [m
+[31m-print(checking_if_str_is_perm_of_pal("Tact Coa"))[m
+[31m-[m
+ [m
+ # much better[m
+ def checking_if_str_is_perm_of_pal_2(string):[m
+[36m@@ -41,4 +39,20 @@[m [mdef checking_if_str_is_perm_of_pal_2(string):[m
+     else:[m
+         return odd_count == 1[m
+ [m
+[31m-print(checking_if_str_is_perm_of_pal_2("Tact Coa"))[m
+\ No newline at end of file[m
+[32m+[m
+[32m+[m[32m# reducing space[m
+[32m+[m[32mdef checking_if_str_is_perm_of_pal_with_bit_vector(string):[m
+[32m+[m[32m    list_of_words = re.findall(r"[\w']+|[.,!?;\-]", string)[m
+[32m+[m[32m    list_as_str = ''.join(list_of_words).lower()[m
+[32m+[m[32m    checker = 0[m
+[32m+[m
+[32m+[m[32m    for char in list_as_str:[m
+[32m+[m[32m        val = ord(char)[m
+[32m+[m
+[32m+[m[32m        # Przełącza dany bit w 'checker' przy użyciu operacji XOR (^)[m
+[32m+[m[32m        checker ^= (1 << val)[m
+[32m+[m
+[32m+[m[32m    if len(list_as_str) % 2 == 0:[m
+[32m+[m[32m        return checker == 0[m
+[32m+[m[32m    else:[m
+[32m+[m[32m        return checker != 0[m
